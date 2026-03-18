@@ -1,0 +1,82 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "email": "test@example.com",
+      "name": "Test User",
+      "createdAt": "2026-03-19T00:00:00.000Z"
+    }
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "name": "PROFIT Signature Hoodie",
+      "price": 145.0,
+      "image": "/images/hoodie.png",
+      "description": "Our flagship heavyweight hoodie designed for ultimate comfort and presence. Crafted from 450GSM organic cotton with a structured fit.",
+      "category": "Apparel",
+      "stock": 50,
+      "createdAt": "2026-03-19T00:00:00.000Z"
+    },
+    {
+      "id": "p2",
+      "name": "PROFIT Essential Tee",
+      "price": 65.0,
+      "image": "/images/tee.png",
+      "description": "The foundation of every urban wardrobe. A mid-weight, boxy fit tee with reinforced collar and refined stitching.",
+      "category": "Apparel",
+      "stock": 120,
+      "createdAt": "2026-03-19T00:00:00.000Z"
+    },
+    {
+      "id": "p3",
+      "name": "PROFIT Shadow Sneakers",
+      "price": 280.0,
+      "image": "/images/sneakers.png",
+      "description": "Minimalist silhouette meets futuristic cushioning. All-black design with technical mesh and premium leather accents.",
+      "category": "Footwear",
+      "stock": 25,
+      "createdAt": "2026-03-19T00:00:00.000Z"
+    },
+    {
+      "id": "p4",
+      "name": "PROFIT Cargo Pant (Dark)",
+      "price": 185.0,
+      "image": "/images/hero.png",
+      "description": "Functional aesthetics for the modern explorer. Featuring utility pockets, adjustable hems, and water-resistant fabric.",
+      "category": "Apparel",
+      "stock": 40,
+      "createdAt": "2026-03-19T00:00:00.000Z"
+    },
+    {
+      "id": "p5",
+      "name": "PROFIT Tech Beanie",
+      "price": 45.0,
+      "image": "/images/tee.png",
+      "description": "Soft, breathable knit with a minimalist PROFIT logo. Designed to retain shape and provide subtle urban warmth.",
+      "category": "Accessories",
+      "stock": 80,
+      "createdAt": "2026-03-19T00:00:00.000Z"
+    },
+    {
+      "id": "p6",
+      "name": "PROFIT Heavyweight Crew",
+      "price": 120.0,
+      "image": "/images/hoodie.png",
+      "description": "Oversized, structural crewneck that maintains a sharp profile. Perfect for layering in the Modern Noir aesthetic.",
+      "category": "Apparel",
+      "stock": 65,
+      "createdAt": "2026-03-19T00:00:00.000Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "productId": "p1",
+      "userId": "u1",
+      "rating": 5,
+      "comment": "Exceptional quality. The weight of the fabric is just right.",
+      "createdAt": "2026-03-19T00:00:00.000Z"
+    }
+  ]
+}
