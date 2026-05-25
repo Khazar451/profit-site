@@ -4,8 +4,9 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Plus } from 'lucide-react';
+import { ArrowUpRight, Plus, Heart } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useWishlist } from '@/context/WishlistContext';
 
 interface ProductCardProps {
   id: string;
@@ -13,15 +14,24 @@ interface ProductCardProps {
   price: string;
   image?: string;
   url: string;
+  tags?: string[];
 }
 
-const ProductCard = ({ id, name, price, image, url }: ProductCardProps) => {
+const ProductCard = ({ id, name, price, image, url, tags }: ProductCardProps) => {
   const { addToCart } = useCart();
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const wishlisted = isInWishlist(id);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart({ id, name, price: parseFloat(price.replace('$', '')), image });
+  };
+
+  const handleWishlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleWishlist(id);
   };
 
   return (
@@ -35,7 +45,7 @@ const ProductCard = ({ id, name, price, image, url }: ProductCardProps) => {
           transition={{ duration: 0.8, ease: [0.165, 0.84, 0.44, 1] }}
           style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}
         >
-          <div style={{ overflow: 'hidden', position: 'relative', aspectRatio: '4/5', marginBottom: '1.5rem', background: '#0a0a0a', border: '1px solid #1a1a1a' }}>
+          <div style={{ overflow: 'hidden', position: 'relative', aspectRatio: '4/5', marginBottom: '1.5rem', background: 'var(--surface)', border: '1px solid var(--border)' }}>
             <div 
               className="product-image-zoom"
               style={{ 
@@ -65,7 +75,40 @@ const ProductCard = ({ id, name, price, image, url }: ProductCardProps) => {
                 <span>No Image Available</span>
               )}
             </div>
+
+            {/* Tags */}
+            {tags && tags.length > 0 && (
+              <div style={{ position: 'absolute', top: '1rem', left: '1rem', display: 'flex', gap: '0.5rem', zIndex: 10 }}>
+                {tags.includes('new') && <span className="badge badge-new">New</span>}
+                {tags.includes('limited') && <span className="badge badge-limited">Limited</span>}
+              </div>
+            )}
+
+            {/* Wishlist heart */}
+            <button
+              onClick={handleWishlist}
+              style={{
+                position: 'absolute',
+                top: '1rem',
+                right: '1rem',
+                background: 'rgba(0,0,0,0.5)',
+                backdropFilter: 'blur(8px)',
+                border: 'none',
+                width: '36px',
+                height: '36px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                zIndex: 10,
+                transition: 'transform 0.3s'
+              }}
+            >
+              <Heart size={16} fill={wishlisted ? 'white' : 'none'} color="white" />
+            </button>
             
+            {/* Quick add */}
             <button 
               onClick={handleAddToCart}
               style={{
@@ -82,7 +125,8 @@ const ProductCard = ({ id, name, price, image, url }: ProductCardProps) => {
                 justifyContent: 'center',
                 cursor: 'pointer',
                 boxShadow: '0 4px 12px rgba(0,0,0,0.5)',
-                zIndex: 10
+                zIndex: 10,
+                transition: 'transform 0.3s'
               }}
             >
               <Plus size={20} color="black" />
@@ -94,11 +138,11 @@ const ProductCard = ({ id, name, price, image, url }: ProductCardProps) => {
               <h3 style={{ fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.15em', marginBottom: '0.5rem', fontWeight: 500 }}>
                 {name}
               </h3>
-              <p style={{ fontSize: '0.9rem', color: '#888', fontFamily: 'monospace' }}>
+              <p style={{ fontSize: '0.9rem', color: 'var(--muted)', fontFamily: 'monospace' }}>
                 {price}
               </p>
             </div>
-            <ArrowUpRight size={16} color="#444" />
+            <ArrowUpRight size={16} color="var(--text-muted)" />
           </div>
         </motion.div>
       </Link>

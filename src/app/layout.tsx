@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import "./globals.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
+import { WishlistProvider } from "@/context/WishlistContext";
 
 export const metadata: Metadata = {
   title: "PROFIT | Modern Noir Streetwear",
-  description: "High-end, minimalist streetwear for the urban elite.",
+  description: "High-end, minimalist streetwear for the urban elite. Shop hoodies, tees, sneakers, and accessories.",
+  keywords: ["streetwear", "fashion", "noir", "urban", "premium", "PROFIT"],
 };
 
 export default function RootLayout({
@@ -23,21 +25,13 @@ export default function RootLayout({
       </head>
       <body>
         <CartProvider>
-          <Header />
-          <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-            {children}
-          </main>
-          <footer style={{ padding: '4rem 0', borderTop: '1px solid #222', textAlign: 'center' }}>
-            <div className="container">
-              <p style={{ fontSize: '1.5rem', fontWeight: 700, letterSpacing: '0.4em', textTransform: 'uppercase', marginBottom: '2rem' }}>PROFIT</p>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.2em', color: '#888' }}>
-                <Link href="/terms">Terms</Link>
-                <Link href="/privacy">Privacy</Link>
-                <a href="https://www.instagram.com/profit_streetwear/" target="_blank" rel="noopener noreferrer">Contact</a>
-              </div>
-              <p style={{ marginTop: '2rem', fontSize: '0.6rem', color: '#444' }}>&copy; 2026 PROFIT STREETWEAR. ALL RIGHTS RESERVED.</p>
-            </div>
-          </footer>
+          <WishlistProvider>
+            <Header />
+            <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+              {children}
+            </main>
+            <Footer />
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>

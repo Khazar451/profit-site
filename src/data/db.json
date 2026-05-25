@@ -3,70 +3,217 @@
     {
       "id": "u1",
       "email": "test@example.com",
-      "name": "Test User",
+      "name": "Alex M.",
       "createdAt": "2026-03-19T00:00:00.000Z"
+    },
+    {
+      "id": "u2",
+      "email": "jordan@example.com",
+      "name": "Jordan K.",
+      "createdAt": "2026-04-02T00:00:00.000Z"
+    },
+    {
+      "id": "u3",
+      "email": "sam@example.com",
+      "name": "Sam R.",
+      "createdAt": "2026-04-15T00:00:00.000Z"
     }
   ],
   "products": [
     {
       "id": "p1",
       "name": "PROFIT Signature Hoodie",
-      "price": 145.0,
+      "price": 145.00,
       "image": "/images/hoodie.png",
       "description": "Our flagship heavyweight hoodie designed for ultimate comfort and presence. Crafted from 450GSM organic cotton with a structured fit.",
       "category": "Apparel",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": [
+        { "name": "Obsidian", "hex": "#0a0a0a" },
+        { "name": "Smoke", "hex": "#3a3a3a" },
+        { "name": "Bone", "hex": "#e8e0d5" }
+      ],
+      "tags": ["bestseller", "essentials"],
       "stock": 50,
       "createdAt": "2026-03-19T00:00:00.000Z"
     },
     {
       "id": "p2",
       "name": "PROFIT Essential Tee",
-      "price": 65.0,
+      "price": 65.00,
       "image": "/images/tee.png",
       "description": "The foundation of every urban wardrobe. A mid-weight, boxy fit tee with reinforced collar and refined stitching.",
       "category": "Apparel",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": [
+        { "name": "Obsidian", "hex": "#0a0a0a" },
+        { "name": "Bone", "hex": "#e8e0d5" },
+        { "name": "Fog", "hex": "#c4c4c4" }
+      ],
+      "tags": ["bestseller", "essentials", "new"],
       "stock": 120,
       "createdAt": "2026-03-19T00:00:00.000Z"
     },
     {
       "id": "p3",
       "name": "PROFIT Shadow Sneakers",
-      "price": 280.0,
+      "price": 280.00,
       "image": "/images/sneakers.png",
       "description": "Minimalist silhouette meets futuristic cushioning. All-black design with technical mesh and premium leather accents.",
       "category": "Footwear",
+      "sizes": ["40", "41", "42", "43", "44", "45"],
+      "colors": [
+        { "name": "Void", "hex": "#000000" },
+        { "name": "Graphite", "hex": "#2d2d2d" }
+      ],
+      "tags": ["limited", "new"],
       "stock": 25,
-      "createdAt": "2026-03-19T00:00:00.000Z"
+      "createdAt": "2026-04-01T00:00:00.000Z"
     },
     {
       "id": "p4",
-      "name": "PROFIT Cargo Pant (Dark)",
-      "price": 185.0,
+      "name": "PROFIT Cargo Pant",
+      "price": 185.00,
       "image": "/images/hero.png",
       "description": "Functional aesthetics for the modern explorer. Featuring utility pockets, adjustable hems, and water-resistant fabric.",
       "category": "Apparel",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": [
+        { "name": "Obsidian", "hex": "#0a0a0a" },
+        { "name": "Olive Shadow", "hex": "#2e3327" }
+      ],
+      "tags": ["essentials"],
       "stock": 40,
       "createdAt": "2026-03-19T00:00:00.000Z"
     },
     {
       "id": "p5",
       "name": "PROFIT Tech Beanie",
-      "price": 45.0,
+      "price": 45.00,
       "image": "/images/tee.png",
       "description": "Soft, breathable knit with a minimalist PROFIT logo. Designed to retain shape and provide subtle urban warmth.",
       "category": "Accessories",
+      "sizes": ["One Size"],
+      "colors": [
+        { "name": "Obsidian", "hex": "#0a0a0a" },
+        { "name": "Slate", "hex": "#4a4a4a" },
+        { "name": "Bone", "hex": "#e8e0d5" }
+      ],
+      "tags": ["essentials", "bestseller"],
       "stock": 80,
       "createdAt": "2026-03-19T00:00:00.000Z"
     },
     {
       "id": "p6",
       "name": "PROFIT Heavyweight Crew",
-      "price": 120.0,
+      "price": 120.00,
       "image": "/images/hoodie.png",
       "description": "Oversized, structural crewneck that maintains a sharp profile. Perfect for layering in the Modern Noir aesthetic.",
       "category": "Apparel",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": [
+        { "name": "Obsidian", "hex": "#0a0a0a" },
+        { "name": "Storm", "hex": "#1e1e2e" }
+      ],
+      "tags": ["essentials"],
       "stock": 65,
       "createdAt": "2026-03-19T00:00:00.000Z"
+    },
+    {
+      "id": "p7",
+      "name": "PROFIT Utility Vest",
+      "price": 195.00,
+      "image": "/images/hero.png",
+      "description": "Tactical-inspired outerwear with multi-pocket design. Padded construction with matte hardware and hidden closures.",
+      "category": "Apparel",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": [
+        { "name": "Obsidian", "hex": "#0a0a0a" },
+        { "name": "Olive Shadow", "hex": "#2e3327" }
+      ],
+      "tags": ["new", "limited"],
+      "stock": 15,
+      "createdAt": "2026-05-01T00:00:00.000Z"
+    },
+    {
+      "id": "p8",
+      "name": "PROFIT Track Pants",
+      "price": 135.00,
+      "image": "/images/sneakers.png",
+      "description": "Tapered silhouette with side-stripe detailing. Constructed from moisture-wicking technical fabric with zippered cuffs.",
+      "category": "Apparel",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": [
+        { "name": "Obsidian", "hex": "#0a0a0a" },
+        { "name": "Graphite", "hex": "#2d2d2d" }
+      ],
+      "tags": ["new"],
+      "stock": 45,
+      "createdAt": "2026-05-05T00:00:00.000Z"
+    },
+    {
+      "id": "p9",
+      "name": "PROFIT Crossbody Bag",
+      "price": 95.00,
+      "image": "/images/tee.png",
+      "description": "Compact, water-resistant crossbody with adjustable strap. Features reflective accents and internal organizer pockets.",
+      "category": "Accessories",
+      "sizes": ["One Size"],
+      "colors": [
+        { "name": "Obsidian", "hex": "#0a0a0a" },
+        { "name": "Stealth", "hex": "#1a1a1a" }
+      ],
+      "tags": ["new", "essentials"],
+      "stock": 60,
+      "createdAt": "2026-05-10T00:00:00.000Z"
+    },
+    {
+      "id": "p10",
+      "name": "PROFIT Chain Necklace",
+      "price": 75.00,
+      "image": "/images/hoodie.png",
+      "description": "Heavyweight stainless steel chain with matte black PVD coating. Minimalist pendant with engraved PROFIT monogram.",
+      "category": "Accessories",
+      "sizes": ["One Size"],
+      "colors": [
+        { "name": "Matte Black", "hex": "#111111" },
+        { "name": "Gunmetal", "hex": "#2c2c2c" }
+      ],
+      "tags": ["new", "limited"],
+      "stock": 30,
+      "createdAt": "2026-05-12T00:00:00.000Z"
+    },
+    {
+      "id": "p11",
+      "name": "PROFIT Runner V2",
+      "price": 245.00,
+      "image": "/images/sneakers.png",
+      "description": "Second generation runner with enhanced React foam midsole. Breathable mono-mesh upper with suede overlays.",
+      "category": "Footwear",
+      "sizes": ["40", "41", "42", "43", "44", "45"],
+      "colors": [
+        { "name": "Shadow", "hex": "#1a1a1a" },
+        { "name": "Earth", "hex": "#3d3429" }
+      ],
+      "tags": ["bestseller"],
+      "stock": 35,
+      "createdAt": "2026-04-20T00:00:00.000Z"
+    },
+    {
+      "id": "p12",
+      "name": "PROFIT Oversized Bomber",
+      "price": 320.00,
+      "image": "/images/hero.png",
+      "description": "Premium satin bomber with ribbed collar and cuffs. Fully lined interior with internal pocket system. Limited run.",
+      "category": "Apparel",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": [
+        { "name": "Obsidian", "hex": "#0a0a0a" },
+        { "name": "Midnight", "hex": "#0d0d1a" }
+      ],
+      "tags": ["limited", "new"],
+      "stock": 10,
+      "createdAt": "2026-05-20T00:00:00.000Z"
     }
   ],
   "reviews": [
@@ -75,8 +222,105 @@
       "productId": "p1",
       "userId": "u1",
       "rating": 5,
-      "comment": "Exceptional quality. The weight of the fabric is just right.",
-      "createdAt": "2026-03-19T00:00:00.000Z"
+      "comment": "Exceptional quality. The weight of the fabric is just right. Best hoodie I've ever owned.",
+      "createdAt": "2026-03-25T00:00:00.000Z"
+    },
+    {
+      "id": "r2",
+      "productId": "p1",
+      "userId": "u2",
+      "rating": 4,
+      "comment": "Great fit and construction. Runs slightly oversized — I'd recommend sizing down if you prefer a tighter look.",
+      "createdAt": "2026-04-10T00:00:00.000Z"
+    },
+    {
+      "id": "r3",
+      "productId": "p2",
+      "userId": "u3",
+      "rating": 5,
+      "comment": "The boxy cut is perfect. Fabric feels premium and the stitching is incredibly clean.",
+      "createdAt": "2026-04-05T00:00:00.000Z"
+    },
+    {
+      "id": "r4",
+      "productId": "p3",
+      "userId": "u1",
+      "rating": 5,
+      "comment": "These sneakers are unreal. The cushioning is next-level and the all-black design goes with everything.",
+      "createdAt": "2026-04-15T00:00:00.000Z"
+    },
+    {
+      "id": "r5",
+      "productId": "p3",
+      "userId": "u2",
+      "rating": 4,
+      "comment": "Sleek design, comfortable right out of the box. Only wish they came in more colors.",
+      "createdAt": "2026-04-20T00:00:00.000Z"
+    },
+    {
+      "id": "r6",
+      "productId": "p4",
+      "userId": "u3",
+      "rating": 5,
+      "comment": "The water-resistant fabric is clutch. Pockets are well-placed and the fit is spot on.",
+      "createdAt": "2026-04-08T00:00:00.000Z"
+    },
+    {
+      "id": "r7",
+      "productId": "p6",
+      "userId": "u1",
+      "rating": 5,
+      "comment": "Heavy, structured, and clean. This crewneck elevated my entire wardrobe.",
+      "createdAt": "2026-04-22T00:00:00.000Z"
+    },
+    {
+      "id": "r8",
+      "productId": "p12",
+      "userId": "u2",
+      "rating": 5,
+      "comment": "The bomber is a statement piece. Satin finish and weight are luxurious. Worth every penny.",
+      "createdAt": "2026-05-22T00:00:00.000Z"
+    },
+    {
+      "id": "r9",
+      "productId": "p5",
+      "userId": "u3",
+      "rating": 4,
+      "comment": "Simple, clean beanie. Keeps its shape well and the knit breathes nicely.",
+      "createdAt": "2026-04-12T00:00:00.000Z"
+    },
+    {
+      "id": "r10",
+      "productId": "p11",
+      "userId": "u1",
+      "rating": 5,
+      "comment": "V2 is a massive upgrade. Lighter, bouncier, and looks even cleaner than the original.",
+      "createdAt": "2026-05-01T00:00:00.000Z"
     }
-  ]
+  ],
+  "collections": [
+    {
+      "slug": "new-arrivals",
+      "name": "New Arrivals",
+      "description": "The latest additions to the PROFIT universe. Fresh drops, limited quantities.",
+      "image": "/images/hero.png",
+      "tags": ["new"]
+    },
+    {
+      "slug": "essentials",
+      "name": "The Essentials",
+      "description": "Timeless staples that form the backbone of modern noir streetwear.",
+      "image": "/images/hoodie.png",
+      "tags": ["essentials"]
+    },
+    {
+      "slug": "limited-drops",
+      "name": "Limited Drops",
+      "description": "Exclusive pieces. Once they're gone, they're gone.",
+      "image": "/images/sneakers.png",
+      "tags": ["limited"]
+    }
+  ],
+  "orders": [],
+  "newsletter": []
 }

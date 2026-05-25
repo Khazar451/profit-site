@@ -8,22 +8,30 @@ interface CartItem {
   price: number;
   image: string;
   quantity: number;
+  size?: string;
+  color?: string;
 }
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: any) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
+  addToCart: (product: any, size?: string, color?: string) => void;
+  removeFromCart: (cartKey: string) => void;
+  updateQuantity: (cartKey: string, quantity: number) => void;
   clearCart: () => void;
   totalItems: number;
   subtotal: number;
+  getCartKey: (id: string, size?: string, color?: string) => string;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+function getCartKey(id: string, size?: string, color?: string): string {
+  return `${id}__${size || 'default'}__${color || 'default'}`;
+}
+
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [hydrated, setHydrated] = useState(false);
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -35,39 +43,47 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         console.error("Failed to parse cart", e);
       }
     }
+    setHydrated(true);
   }, []);
 
   // Save cart to localStorage on change
   useEffect(() => {
-    localStorage.setItem('profit_cart', JSON.stringify(cart));
-  }, [cart]);
+    if (hydrated) {
+      localStorage.setItem('profit_cart', JSON.stringify(cart));
+    }
+  }, [cart, hydrated]);
 
-  const addToCart = (product: any) => {
+  const addToCart = (product: any, size?: string, color?: string) => {
     setCart(prev => {
-      const existing = prev.find(item => item.id === product.id);
+      const key = getCartKey(product.id, size, color);
+      const existing = prev.find(item => getCartKey(item.id, item.size, item.color) === key);
       if (existing) {
-        return prev.map(item => 
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        return prev.map(item =>
+          getCartKey(item.id, item.size, item.color) === key
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         );
       }
-      return [...prev, { 
-        id: product.id, 
-        name: product.name, 
-        price: product.price, 
-        image: product.image, 
-        quantity: 1 
+      return [...prev, {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        quantity: 1,
+        size,
+        color
       }];
     });
   };
 
-  const removeFromCart = (productId: string) => {
-    setCart(prev => prev.filter(item => item.id !== productId));
+  const removeFromCart = (cartKey: string) => {
+    setCart(prev => prev.filter(item => getCartKey(item.id, item.size, item.color) !== cartKey));
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
-    if (quantity < 1) return removeFromCart(productId);
-    setCart(prev => prev.map(item => 
-      item.id === productId ? { ...item, quantity } : item
+  const updateQuantity = (cartKey: string, quantity: number) => {
+    if (quantity < 1) return removeFromCart(cartKey);
+    setCart(prev => prev.map(item =>
+      getCartKey(item.id, item.size, item.color) === cartKey ? { ...item, quantity } : item
     ));
   };
 
@@ -77,7 +93,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, totalItems, subtotal }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, totalItems, subtotal, getCartKey }}>
       {children}
     </CartContext.Provider>
   );

@@ -5,27 +5,27 @@ import ProductCard from './ProductCard';
 
 interface ProductGridProps {
   initialProducts: any[];
+  title?: string;
+  subtitle?: string;
+  showViewAll?: boolean;
+  viewAllHref?: string;
 }
 
-const ProductGrid = ({ initialProducts }: ProductGridProps) => {
+const ProductGrid = ({ initialProducts, title = "The Collection", subtitle = "Limited release profit streetwear.", showViewAll = true, viewAllHref = "/shop" }: ProductGridProps) => {
   return (
-    <section id="products" style={{ padding: '8rem 0' }}>
+    <section id="products" className="section">
       <div className="container">
         <div style={{ marginBottom: '4rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
           <div>
-            <h2 style={{ fontSize: '2rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600 }}>The Collection</h2>
-            <p style={{ color: '#888', marginTop: '0.5rem', fontSize: '0.9rem' }}>Limited release profit streetwear.</p>
+            <h2 className="section-title">{title}</h2>
+            <p className="section-subtitle">{subtitle}</p>
           </div>
-          <button style={{ background: 'none', border: 'none', color: 'white', textDecoration: 'underline', cursor: 'pointer', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>View All</button>
+          {showViewAll && (
+            <a href={viewAllHref} className="button-subtle">View All</a>
+          )}
         </div>
         
-        <div 
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', 
-            gap: '4rem 3rem' 
-          }}
-        >
+        <div className="product-grid">
           {initialProducts.map((product: any) => (
             <ProductCard 
               key={product.id}
@@ -34,6 +34,7 @@ const ProductGrid = ({ initialProducts }: ProductGridProps) => {
               price={`$${product.price.toFixed(2)}`}
               image={product.image}
               url={`/products/${product.id}`}
+              tags={product.tags}
             />
           ))}
         </div>
